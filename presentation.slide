@@ -1,0 +1,64 @@
+Modularizacion de Proyectos
+
+Andres Puello ("Sr. Forguaiders")
+apuello1025@gmail.com
+
+* Parece Chiste
+
+.image /images/arq-meme.png
+
+* Arquitectura de carpetas:
+Existen varias arquitecturas de carpetas para organizar microservicios en Go, cada una
+con sus propias ventajas y desventajas.
+
+Veamos algunas de las más comunes y recomendadas:
+
+*Arquitectura*Basada*en*Características*(Feature*based)*
+*Arquitectura*Basada*en*DDD*(Domain-Driven*Design)*
+*Arquitectura*Basada*en*Proyectos*(Project-based)*
+*Arquitectura*Hexagonal*(Ports*and*Adapters)**
+*Arquitectura*en*Capas*(Layered)**
+
+: (Feature)En esta arquitectura, las carpetas están organizadas por características o funcionalidades mas monoliticas
+: (DDD) En esta arquitectura, las carpetas se organizan según los agregados y contextos delimitados del dominio.
+: (Project-based) En esta arquitectura, los microservicios se organizan como proyectos independientes dentro de un monorepo.
+: Los asteriscos * son las arquitecturas con las que he trabajado
+
+
+* Arquitectura en Capas (Layered)
+En esta arquitectura, las carpetas están organizadas por capas, como controladores, servicios y repositorios.
+
+*Ventajas:*
+
+- Claridad: Facilita la comprensión de la separación de responsabilidades.
+- Reutilización de código: Las capas comunes pueden ser reutilizadas por diferentes partes del código.
+
+*Desventajas:*
+
+- Acoplamiento: Puede llevar a un acoplamiento más fuerte entre las capas.
+- Dificultad de mantenimiento: Puede ser más difícil de mantener en aplicaciones muy grandes.
+
+* Arquitectura en Capas (Layered)
+.code /codes/layered.go
+
+* Arquitectura Hexagonal (Ports and Adapters)
+.image /images/hexagonal.png 550 _
+
+: La arquitectura hexagonal se centra en aislar el núcleo de la aplicación de las dependencias externas mediante puertos y adaptadores.
+: Separar las resp de cada capa de manera que entre mas dentro del nucleo se enceuntre esta mas aislada, lo que me permite tener una logica de nogicio que se agnostica a quien la requiera http, cli, grpc...
+
+* Arquitectura Hexagonal (Ports and Adapters)
+
+*Ventajas:*
+
+- Aislamiento: El núcleo de la aplicación está completamente aislado de las dependencias externas.
+- Facilita pruebas: La lógica de negocio puede ser probada independientemente de las dependencias externas.
+- Flexibilidad: Facilita el cambio de dependencias externas sin afectar la lógica de negocio.
+
+*Desventajas:*
+
+- Complejidad: Puede ser más difícil de entender y aplicar correctamente.
+- Curva de aprendizaje: Requiere más tiempo y esfuerzo para los desarrolladores no familiarizados con esta arquitectura.
+
+* Arquitectura Hexagonal (Ports and Adapters)
+.code /codes/hexagonal.go
